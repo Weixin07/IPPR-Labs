@@ -81,13 +81,12 @@ figure, imshow(BW3);
 %% Calculate the gray-level co-occurrence matrix (GLCM) and return the scaled image used in the calculation. By specifying empty brackets for the GrayLimits parameter, the example uses the minimum and maximum grayscale vales in the input image as limits.
 I = [ 1 1 5 6 8 8; 2 3 5 7 0 2; 0 2 3 5 6 7];
 
-[glcm, SI] = graycomatrix(I,'NumLevels',9,'GrayLimits',[]);
+[~, SI] = graycomatrix(I,'NumLevels',9,'GrayLimits',[]);
 
 glcm = [0 1 2 3;1 1 2 3;1 0 2 0;0 0 0 3];
 
 % Calculate statistical properties of the GLCM. 
 stats = graycoprops(glcm); 
-
 
 %% Recognition
 % Read Image
