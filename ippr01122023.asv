@@ -50,7 +50,6 @@ fprintf('Bounding Box: %s\n', mat2str(regionProps(i).BoundingBox));
 fprintf('Centroid: %s\n', mat2str(regionProps(i).Centroid));
 fprintf('\n');
 end
-%}
 
 %% Shape Description: Reducing the size of the object to its “skeleton”. The concept of object skeleton is frequently used in image analysis applications, e.g. optical character recognition, edge tracking etc. Skeleton of an object can be obtained by means of medial axis transformation.
 % Load the original image
@@ -87,45 +86,59 @@ glcm = [0 1 2 3;1 1 2 3;1 0 2 0;0 0 0 3];
 
 % Calculate statistical properties of the GLCM. 
 stats = graycoprops(glcm); 
-
+%}
 
 %% Recognition
 % Read Image
-I = imread('standard_test_images\sample.bmp');
+I = imread('standard_test_images\');
 imshow(I)
 
-% Convert to grayscale image
-Igray = rgb2gray(I);
+%% Convert to grayscale image
+gray = rgb2gray(|);
 imshow(Igray)
 
-% Convert to binary image
-Ibw = imbinarize(Igray,graythresh(Igray));
+%% Convert to binary image
+bw = im2bw(Igray,graythresh(Igray));
 imshow(Ibw)
 
-% Edge detection
-Iedge = edge(uint8(Ibw));
-imshow(Iedge)
+%% Edge detection
+edge = edge(uint8(Ibw));
+imshow(ledge)
 
-% Morphology
-% Image Dilation
+%% Morphology
+
+De*AONOD
+
+G2erroe
+
+rPOrROO®
+% * *Image Dilation*
+
 se = strel('square',2);
-Iedge2 = imdilate(Iedge, se);
-imshow(Iedge2);
 
-% Image Filling
-Ifill= imfill(Iedge2,'holes');
-imshow(Ifill)
+edge2 = imdilate(ledge, se);
+imshow(ledge2);
 
-% Blobs analysis
-[Ilabel, num] = bwlabel(Ifill); 
-disp(num); 
-Iprops = regionprops(Ilabel); 
-Ibox = [Iprops.BoundingBox]; 
-Ibox = reshape(Ibox,[4 50]); 
-imshow(I) 
+% * *Image Filling*
 
-% Plot the Object Location
-hold on; 
-for cnt = 1:50 
- rectangle('position',Ibox(:,cnt),'edgecolor','r'); 
+fill= imfill(ledge2,'holes');
+imshow/i[fill)
+
+%% Blobs analysis
+
+llabel num] = bwlabel (Ifill);
+disp(num);
+
+props = regionprops(Ilabel);
+box = [Ilprops.BoundingBox];
+box = reshape(Ibox,[4 50]);
+imshow(I)
+
+%% Plot the Object Location
+
+hold on;
+
+for cnt = 1:50
+rectangle('position',Ibox(:,cnt),'edgecolor','r');
+
 end
